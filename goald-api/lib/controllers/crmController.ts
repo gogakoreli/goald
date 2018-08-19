@@ -49,7 +49,7 @@ export class ContactController {
   }
 
   public deleteContact(req: Request, res: Response) {
-    Contact.remove({ _id: req.params.contactId }, (err, contact) => {
+    Contact.remove({ _id: req.params.contactId }, err => {
       if (err) {
         res.send(err);
       }
