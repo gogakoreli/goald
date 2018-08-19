@@ -7,7 +7,7 @@
     "dev": "ts-node ./lib/server.ts",
     "prod": "npm run build & node ./dist/server.js",
     "start": "npm run build:live",
-    "build:live": "nodemon --exec npm run dev"
+    "build:live": "nodemon --ext ts --exec npm run dev"
   },
   "author": "",
   "license": "ISC",

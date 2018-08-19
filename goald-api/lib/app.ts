@@ -1,20 +1,23 @@
 import * as bodyParser from 'body-parser';
 import * as express from 'express';
-import { Routes } from './routes/crmRoutes';
+import { CrmRoutes } from './routes/crmRoutes';
+import { UserRoutes } from './routes/userRoutes';
 
 import mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 class App {
   public app: express.Application;
-  public routePrv: Routes = new Routes();
+  public crmRoutes: CrmRoutes = new CrmRoutes();
+  public userRoutes: UserRoutes = new UserRoutes();
 
   public mongoUrl: string = 'mongodb://localhost:27017/CRMdb';
 
   constructor() {
     this.app = express();
     this.config();
-    this.routePrv.routes(this.app);
+    this.userRoutes.routes(this.app);
+    this.crmRoutes.routes(this.app);
     this.mongoSetup();
   }
 
